@@ -1,13 +1,16 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory {get; private set;}
-
+    public static InventorySystem current;
+    public delegate void Inventory();
+    public event Inventory onInventoryChangedEvent;
     public void Awake(){
+        current = this;
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
     }
@@ -27,6 +30,7 @@ public class InventorySystem : MonoBehaviour
             inventory.Add(newItem);
             m_itemDictionary.Add(refrenceData, newItem);
         }
+        onInventoryChangedEvent?.Invoke();
     }
 
     public void Remove(InventoryItemData refrenceData){
@@ -37,6 +41,7 @@ public class InventorySystem : MonoBehaviour
                 m_itemDictionary.Remove(refrenceData);
             }
         }
+        onInventoryChangedEvent?.Invoke();
     }
 }
 
