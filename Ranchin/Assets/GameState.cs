@@ -19,7 +19,7 @@ public class GameState : MonoBehaviour
     }
 
     public void decreaseMoney(int amount){
-        _money += amount;
+        _money -= amount;
         _moneyText.text = "" + _money;
     }
 
