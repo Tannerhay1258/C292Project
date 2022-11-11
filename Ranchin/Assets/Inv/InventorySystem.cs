@@ -6,6 +6,8 @@ public class InventorySystem : MonoBehaviour
 {
     private Dictionary<InventoryItemData, InventoryItem> m_itemDictionary;
     public List<InventoryItem> inventory {get; private set;}
+
+    public int index;
     public static InventorySystem current;
     public delegate void Inventory();
     public event Inventory onInventoryChangedEvent;
@@ -13,6 +15,7 @@ public class InventorySystem : MonoBehaviour
         current = this;
         inventory = new List<InventoryItem>();
         m_itemDictionary = new Dictionary<InventoryItemData, InventoryItem>();
+        index = 0; 
     }
 
     public InventoryItem Get(InventoryItemData refrenceData){
@@ -40,6 +43,26 @@ public class InventorySystem : MonoBehaviour
                 inventory.Remove(value);
                 m_itemDictionary.Remove(refrenceData);
             }
+        }
+        onInventoryChangedEvent?.Invoke();
+    }
+
+    public InventoryItem getIndex(){
+        if (inventory.Count == 0 ){
+            return null;
+        }
+        return inventory[index];
+    }
+    public void increaseIndex(){
+        index = (index + 1) % inventory.Count;
+        onInventoryChangedEvent?.Invoke();
+    }
+
+    public void decreaseIndex(){
+        if (index == 0){
+            index = inventory.Count-1;
+        } else {
+            index -= 1;
         }
         onInventoryChangedEvent?.Invoke();
     }

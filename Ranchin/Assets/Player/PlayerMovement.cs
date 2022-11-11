@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public TileBase dirt;
     public TileBase seed;
     public GameObject seeds;
+    [SerializeField] InventoryItemData seedBag;
     private Vector3Int lastPostion;
     private bool canHarvest;
 
@@ -28,8 +29,7 @@ public class PlayerMovement : MonoBehaviour
         canHarvest = true;
     }
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         // Input
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -40,28 +40,47 @@ public class PlayerMovement : MonoBehaviour
 
 
         Vector3Int farmlandMapTile = farmland.WorldToCell(transform.position);
-        // Debug.Log(farmland.GetTile(farmlandMapTile));
         TileBase tile = farmland.GetTile(farmlandMapTile);
         highlightMap.SetTile(lastPostion, null);
         highlightMap.SetTile(farmlandMapTile, highlight);
-        if(tile){
-            if (tile.name == "dirt" && Input.GetKeyDown(KeyCode.E)){
-                farmland.SetTile(farmlandMapTile, tilledDirt);
-                Debug.Log(farmland.GetTile(farmlandMapTile));
-            }
-            if (tile.name == "dirtplowed" && Input.GetKeyDown(KeyCode.P)){
-                if (plants.GetTile(farmlandMapTile) == null){
-                    //plants.SetTile(farmlandMapTile, seed)
-                    plants.SetTile(farmlandMapTile, tilledDirt);
-                    Instantiate(seeds, farmlandMapTile + new Vector3(.5f,.5f,0), transform.rotation);
+        if(Input.GetKeyDown(KeyCode.E)){
+            InventoryItem inHand = InventorySystem.current.getIndex();
+            // Debug.Log(farmland.GetTile(farmlandMapTile));
+            if(tile){
+                if (tile.name == "dirt"){
+                    farmland.SetTile(farmlandMapTile, tilledDirt);
+                    Debug.Log(farmland.GetTile(farmlandMapTile));
+                } else if (tile.name == "dirtplowed"){
+                    if (plants.GetTile(farmlandMapTile) == null && inHand.data.displayName.Contains("Seedbag")){
+                        //plants.SetTile(farmlandMapTile, seed)
+                        plants.SetTile(farmlandMapTile, tilledDirt);
+                        Instantiate(seeds, farmlandMapTile + new Vector3(.5f,.5f,0), transform.rotation);
+                        InventorySystem.current.Remove(inHand.data);
+                    }
                 }
+                canHarvest = true;
+                rb.WakeUp();
+            } 
+        } else if (Input.GetKeyDown(KeyCode.Z)){
+            InventorySystem.current.decreaseIndex();
+        } else if (Input.GetKeyDown(KeyCode.C)){
+            InventorySystem.current.increaseIndex();
+        } else if (Input.GetKeyDown(KeyCode.B)){
+            int money = GameState.Instance.getMoney();
+            if(money >= 10){
+                GameState.Instance.decreaseMoney(10);
+                InventorySystem.current.Add(seedBag);
             }
+        } else if (Input.GetKeyDown(KeyCode.V)){
+            InventoryItem inhand = InventorySystem.current.getIndex();
+            if(inhand.data.value > 0){
+                GameState.Instance.IncreaseMoney(inhand.data.value);
+                InventorySystem.current.Remove(inhand.data);
+            }
+
         }
         lastPostion = farmlandMapTile;
-        if(Input.GetKeyDown(KeyCode.E)){
-            canHarvest = true;
-            rb.WakeUp();
-        }
+
     }
     void FixedUpdate(){
         // Movement
@@ -70,6 +89,8 @@ public class PlayerMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.name.Contains("Produce")){
+            col.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
+        } else if (col.gameObject.name.Contains("SeedBag")){
             col.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
         }
     }

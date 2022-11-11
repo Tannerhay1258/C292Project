@@ -16,3 +16,4 @@ MonoBehaviour:
   displayName: Eggplant
   icon: {fileID: 1562939037, guid: 4bbbac6ff470f894584b9f10f7cc3bb5, type: 3}
   prefab: {fileID: 4592294356257265600, guid: 0d56640b5c7730b489788f785f898933, type: 3}
+  value: 20

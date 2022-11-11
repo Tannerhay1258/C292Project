@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80f21ecc909da054294ed53c8f677f07, type: 3}
-  m_Name: Inventory Item_pepper
+  m_Name: Inventory Item_eggplanseeds
   m_EditorClassIdentifier: 
-  id: InventoryItem_pepper
-  displayName: Pepper
-  icon: {fileID: -665765487, guid: 4bbbac6ff470f894584b9f10f7cc3bb5, type: 3}
+  id: InventoryItem_eggplantseeds
+  displayName: Eggplant Seedbag
+  icon: {fileID: -1711767741, guid: 4bbbac6ff470f894584b9f10f7cc3bb5, type: 3}
   prefab: {fileID: 0}
-  value: 20
+  value: 10

@@ -18,16 +18,22 @@ public class InventoryManager : MonoBehaviour
         DrawInventory();
     }
     public void DrawInventory(){
+        int i = 0;
         foreach(InventoryItem item in InventorySystem.current.inventory){
-            AddInventorySlot(item);
+            AddInventorySlot(item, i);
+            i ++;
         }
     }
 
-    public void AddInventorySlot(InventoryItem item){
+    public void AddInventorySlot(InventoryItem item, int i){
         GameObject obj = Instantiate(m_slotPrefab);
         obj.transform.SetParent(transform);
 
         Slot sl = obj.GetComponent<Slot>();
-        sl.set(item);
+        if( i != InventorySystem.current.index){
+            sl.set(item);
+        } else {
+            sl.setHilighted(item);
+        }
     }
 }
