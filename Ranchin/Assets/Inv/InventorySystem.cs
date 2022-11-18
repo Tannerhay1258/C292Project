@@ -32,6 +32,7 @@ public class InventorySystem : MonoBehaviour
             InventoryItem newItem = new InventoryItem(refrenceData);
             inventory.Add(newItem);
             m_itemDictionary.Add(refrenceData, newItem);
+            this.increaseIndex();
         }
         onInventoryChangedEvent?.Invoke();
     }
@@ -42,6 +43,7 @@ public class InventorySystem : MonoBehaviour
             if(value.stackSize == 0){
                 inventory.Remove(value);
                 m_itemDictionary.Remove(refrenceData);
+                this.decreaseIndex();
             }
         }
         onInventoryChangedEvent?.Invoke();

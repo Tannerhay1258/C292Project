@@ -50,12 +50,14 @@ public class PlayerMovement : MonoBehaviour
                 if (tile.name == "dirt"){
                     farmland.SetTile(farmlandMapTile, tilledDirt);
                     Debug.Log(farmland.GetTile(farmlandMapTile));
+                    AudioManager.current.playCrunch();
                 } else if (tile.name == "dirtplowed"){
                     if (plants.GetTile(farmlandMapTile) == null && inHand.data.displayName.Contains("Seedbag")){
                         //plants.SetTile(farmlandMapTile, seed)
                         plants.SetTile(farmlandMapTile, tilledDirt);
-                        Instantiate(seeds, farmlandMapTile + new Vector3(.5f,.5f,0), transform.rotation);
+                        Instantiate(inHand.data.prefab, farmlandMapTile + new Vector3(.5f,.5f,0), transform.rotation);
                         InventorySystem.current.Remove(inHand.data);
+                        AudioManager.current.playCrunch();
                     }
                 }
                 canHarvest = true;
@@ -65,20 +67,7 @@ public class PlayerMovement : MonoBehaviour
             InventorySystem.current.decreaseIndex();
         } else if (Input.GetKeyDown(KeyCode.C)){
             InventorySystem.current.increaseIndex();
-        } else if (Input.GetKeyDown(KeyCode.B)){
-            int money = GameState.Instance.getMoney();
-            if(money >= 10){
-                GameState.Instance.decreaseMoney(10);
-                InventorySystem.current.Add(seedBag);
-            }
-        } else if (Input.GetKeyDown(KeyCode.V)){
-            InventoryItem inhand = InventorySystem.current.getIndex();
-            if(inhand.data.value > 0){
-                GameState.Instance.IncreaseMoney(inhand.data.value);
-                InventorySystem.current.Remove(inhand.data);
-            }
-
-        }
+        } 
         lastPostion = farmlandMapTile;
 
     }
@@ -90,12 +79,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if(col.gameObject.name.Contains("Produce")){
             col.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
+            AudioManager.current.playPickup();
         } else if (col.gameObject.name.Contains("SeedBag")){
             col.gameObject.GetComponent<ItemObject>().OnHandlePickupItem();
         }
     }
     void OnTriggerStay2D(Collider2D col){
-        if (col.gameObject.name.Contains("Crop")){
+        if (col.gameObject.name.Contains("Crop") || col.gameObject.name.Contains("pepperseed")){
             if(!canHarvest){
                 return;
             }

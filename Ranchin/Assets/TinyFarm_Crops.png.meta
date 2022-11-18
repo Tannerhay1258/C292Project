@@ -713,28 +713,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_33
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 64
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6febbe9f8671ffb4e93e0b89a1bf5502
-      internalID: -1005069158
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: TinyFarm_Crops_36
+      name: pepper_produce
       rect:
         serializedVersion: 2
         x: 0
@@ -755,7 +734,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_37
+      name: pepper_seedbag
       rect:
         serializedVersion: 2
         x: 8
@@ -776,7 +755,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_38
+      name: pepper_seed
       rect:
         serializedVersion: 2
         x: 16
@@ -797,15 +776,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_39
+      name: pepper1
       rect:
         serializedVersion: 2
         x: 24
         y: 56
         width: 8
         height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -818,15 +797,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_40
+      name: pepper2
       rect:
         serializedVersion: 2
         x: 32
         y: 56
         width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        height: 16
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -839,15 +818,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_41
+      name: pepper3
       rect:
         serializedVersion: 2
         x: 40
         y: 56
         width: 8
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -860,15 +839,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: TinyFarm_Crops_42
+      name: pepper4
       rect:
         serializedVersion: 2
         x: 48
         y: 56
         width: 8
         height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1675,13 +1654,12 @@ TextureImporter:
       TinyFarm_Crops_50: -825072865
       TinyFarm_Crops_6: 1844799614
       TinyFarm_Crops_34: 606663579
-      TinyFarm_Crops_42: 1349997302
+      TinyFarm_Crops_63: -84449780
       TinyFarm_Crops_53: -1701308058
       TinyFarm_Crops_35: 1286986112
       TinyFarm_Crops_2: -693329735
       TinyFarm_Crops_21: 1891738352
       TinyFarm_Crops_66: -1564928792
-      TinyFarm_Crops_63: -84449780
       TinyFarm_Crops_72: -1553780473
       TinyFarm_Crops_82: -1747395647
       TinyFarm_Crops_47: -1391044053
@@ -1694,9 +1672,8 @@ TextureImporter:
       TinyFarm_Crops_19: -315024543
       TinyFarm_Crops_78: -151912136
       TinyFarm_Crops_16: -1335681997
-      TinyFarm_Crops_37: 1593260032
       eggplant1: -1185053955
-      TinyFarm_Crops_41: 462166752
+      pepper1: 1449961098
       TinyFarm_Crops_70: 999037157
       TinyFarm_Crops_4: 1494371267
       TinyFarm_Crops_71: 2132151909
@@ -1712,40 +1689,42 @@ TextureImporter:
       TinyFarm_Crops_67: 1959886593
       eggplant_seeds: -1711767741
       TinyFarm_Crops_81: -128698643
-      TinyFarm_Crops_38: 1887390592
+      pepper_seedbag: 1593260032
       TinyFarm_Crops_18: -766841892
       TinyFarm_Crops_32: 859764689
       TinyFarm_Crops_75: -1568304863
       eggplant_produce: 1562939037
-      TinyFarm_Crops_39: 1449961098
       TinyFarm_Crops_77: -1508229097
       TinyFarm_Crops_45: 1703612020
       TinyFarm_Crops_79: -544742297
       TinyFarm_Crops_24: 1045131437
       TinyFarm_Crops_68: -1869494068
-      TinyFarm_Crops_40: 1373320259
       TinyFarm_Crops_58: -337913531
-      TinyFarm_Crops_73: -1135292523
       TinyFarm_Crops_64: -1505869310
+      TinyFarm_Crops_73: -1135292523
       TinyFarm_Crops_56: -361591145
       TinyFarm_Crops_23: 917938393
       TinyFarm_Crops_65: 1471485206
+      pepper_produce: -665765487
+      pepper2: 1373320259
       TinyFarm_Crops_76: -1370945800
       TinyFarm_Crops_30: 1821180054
       TinyFarm_Crops_33: -1005069158
       TinyFarm_Crops_28: 518220985
-      TinyFarm_Crops_36: -665765487
       TinyFarm_Crops_46: -2131699347
       TinyFarm_Crops_60: -732163438
+      pepper3: 462166752
       TinyFarm_Crops_0: -37067876
       TinyFarm_Crops_44: 1108231492
       TinyFarm_Crops_17: -2050846702
       TinyFarm_Crops_49: -2018701831
       TinyFarm_Crops_51: -2060765813
+      pepper4: 1349997302
       TinyFarm_Crops_55: 134016438
       TinyFarm_Crops_61: 1180695003
       TinyFarm_Crops_59: 1343160422
       TinyFarm_Crops_62: 457714793
+      pepper_seed: 1887390592
       TinyFarm_Crops_8: -5077180
       TinyFarm_Crops_26: 766004881
       eggplant2: 847096674
